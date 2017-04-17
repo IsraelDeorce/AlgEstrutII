@@ -56,6 +56,7 @@ public class Heap {
 	// folha da direita e chama o sift_down para arrumar
 	public int get() {
 		int res = v[0];
+		//o --size primeiro decrementa o size e depois usa o valor
 		v[0] = v[--size];
 		sift_down(0);
 		return res;
@@ -64,26 +65,26 @@ public class Heap {
 	// compara os dois filhos e escolhe o maior para trocar com a raiz
 	// continua até os filhos não serem maiores ou se não houverem mais filhos
 	private void sift_down(int pos) {
-		int ptroca = pos;
+		int pTroca = pos;
 		int pLeft = left(pos);
 		int pRight = right(pos);
 
 		if (pLeft < size && v[pLeft] > v[pos])
-			ptroca = pLeft;
-		if (pRight < size && v[pRight] > v[ptroca])
-			ptroca = pRight;
-		if (ptroca == pos)
+			pTroca = pLeft;
+		if (pRight < size && v[pRight] > v[pTroca])
+			pTroca = pRight;
+		if (pTroca == pos)
 			return;
 
-		int aux = v[ptroca];
-		v[ptroca] = v[pos];
+		int aux = v[pTroca];
+		v[pTroca] = v[pos];
 		v[pos] = aux;
-		sift_down(ptroca);
+		sift_down(pTroca);
 	}
 
 	private void fazHeap(int pos) {
 
-		int ptroca = pos;
+		int pTroca = pos;
 		int pLeft = left(pos);
 		int pRight = right(pos);
 
@@ -94,17 +95,17 @@ public class Heap {
 		fazHeap(pRight);
 
 		if (pLeft < size && v[pLeft] > v[pos])
-			ptroca = pLeft;
-		if (pRight < size && v[pRight] > v[ptroca])
-			ptroca = pRight;
-		if (ptroca == pos)
+			pTroca = pLeft;
+		if (pRight < size && v[pRight] > v[pTroca])
+			pTroca = pRight;
+		if (pTroca == pos)
 			return;
 
-		int aux = v[ptroca];
-		v[ptroca] = v[pos];
+		int aux = v[pTroca];
+		v[pTroca] = v[pos];
 		v[pos] = aux;
 
-		fazHeap(ptroca);
+		fazHeap(pTroca);
 
 	}
 
